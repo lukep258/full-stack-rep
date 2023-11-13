@@ -3,8 +3,8 @@
 ## full stack rep of creating both the front and backend of a boilerplate webpage.
 
 ## Schema:
--instructors table will have id, name, age, and subject
--students table will have id, name, age, and a foreign key of the instructor id
+- instructors table will have id, name, age, and subject
+- students table will have id, name, age, and a foreign key of the instructor id
 
 ## ERD:
 ![image](https://github.com/lukep258/full-stack-rep/assets/143543147/fadb7e9b-5eef-45aa-9065-5ad8df209ab8)
