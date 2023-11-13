@@ -5,6 +5,11 @@
 ## Schema:
 - instructors table will have id, name, age, and subject
 - students table will have id, name, age, and a foreign key of the instructor id
+- primary key will be serial primary key
+- names will be varchar
+- ages will be integer
+- subject will be varchar
+- foreign key will point to instructor id
 
 ## ERD:
 ![image](https://github.com/lukep258/full-stack-rep/assets/143543147/fadb7e9b-5eef-45aa-9065-5ad8df209ab8)
