@@ -1,6 +1,8 @@
 const init=()=>{
     const submission = document.getElementById('button')
     submission.addEventListener('click',requestHandler)
+    sendGet({reqTable:'instructors',reqKey:'*'})
+    sendGet({reqTable:'students',reqKey:'*'})
 }
 
 const requestHandler=()=>{
@@ -42,7 +44,64 @@ const sendGet=({reqTable,reqKey})=>{
         method:'GET'
     })
     .then(response=>response.json())
-    .then(data=>console.log(data))
+    .then(data=>printData(data,'get'))
+}
+
+const sendPost=({reqTable,reqName,reqAge,reqSubject,reqfKey})=>{
+    const reqURL=`http://127.0.0.1:3000/${reqTable}`
+    fetch(reqURL,{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({reqName,reqAge,reqSubject,reqfKey})
+    })
+    .then(response=>response.json())
+    .then(data=>printData(data,'post'))
+}
+
+const sendPatch=({reqTable,reqKey,reqName,reqAge,reqSubject,reqfKey})=>{
+    const reqURL=`http://127.0.0.1:3000/${reqTable}/${reqKey}`
+    console.log(reqTable,reqKey)
+    fetch(reqURL,{
+        method:'PATCH',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({reqName,reqAge,reqSubject,reqfKey})
+    })
+    .then(response=>response.json())
+    .then(data=>printData(data,'patch'))
+}
+
+const printData=(data,verb)=>{
+    console.log(data)
+    const htmlLog = document.getElementById('log')
+    const htmlRowText = document.createElement('p')
+    htmlRowText.textContent = verb
+
+    const htmlTable = document.createElement('table')
+    htmlLog.prepend(htmlTable)
+    htmlLog.prepend(htmlRowText)
+
+    for(let row in data){
+        const htmlRow = document.createElement('tr')
+        htmlTable.append(htmlRow)
+        console.log(typeof data[row]==='object')
+        if(typeof data[row]==='object'){
+            for(property in data[row]){
+                const htmlProp = document.createElement('th')
+                htmlRow.append(htmlProp)
+                htmlProp.textContent = data[row][property]
+            }
+        }
+        else{
+            const htmlProp = document.createElement('th')
+            htmlRow.append(htmlProp)
+            htmlProp.textContent = data[row]
+        }
+    }
+
 }
 
 init()
