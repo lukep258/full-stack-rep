@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Rep</title>
+    <link rel="stylesheet" href="main.css">
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <h1>Instructors and Students</h1>
+    <div id="selectors">
+        <select id="verb">
+            <option value="get">get</option>
+            <option value="post">post</option>
+            <option value="patch">patch</option>
+            <option value="delete">delete</option>
+        </select>
+        <select id="table">
+            <option value="instructors">instructors</option>
+            <option value="students">students</option>
+        </select>
+        <select id="pKey">
+            <option value="*">all</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+    </div>
+    <div>
+        <input id="name" placeholder="name">
+        <input id="age" placeholder="age">
+        <input id="subject" placeholder="subject">
+        <select id="fKey">
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+    </div>
+    <button id="button">send</button>
+</body>
+</html>
